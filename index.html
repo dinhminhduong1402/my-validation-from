@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="main">
+        <form id="form-signup" action="" class="form">
+           <h3 class="form__header">Sign up</h3>
+
+           <p class="form__lable">User name:</p>
+           <input id="username" type="text" class="form__input" placeholder="User name">
+           <span class="error-message"></span>
+
+           <p class="form__lable">Email:</p>
+           <input id="email" type="text" class="form__input" placeholder="Email">
+           <span class="error-message"></span>
+
+           <p class="form__lable">Password:</p>
+           <input id="password" type="password" class="form__input" placeholder="Password">
+           <span class="error-message"></span>
+
+           <p class="form__lable">Confirm password:</p>
+           <input id="passwordConfirm" type="password" class="form__input" placeholder="Confirm password">
+           <span class="error-message"></span>
+
+           <!-- <label for="selector">Chose 1:</label>
+           <select name="selector" id="selector" >
+            
+                <option value="selector1">selector1</option>
+                <option value="selector2">selector2</option>
+                <option value="selector3">selector3</option>
+                <option value="selector4">selector4</option>
+                <option value="selector5">selector5</option>
+           </select>
+           <span class="error-message"></span> -->
+
+           <label class="form_lable for="form__gender" ">Gender:</label>
+           <div class="form__gender">
+
+               <label for="male" class="gender__label">Male</label>
+               <input class="form__radio" type="radio" name="gender" value="Male" id="male">
+
+               <label for="female" class="gender__label">Female</label>
+               <input class="form__radio" type="radio" name="gender" value="Female" id="female">
+
+               <label for="lgbt" class="gender__label">LGBT</label>
+               <input class="form__radio" type="radio" name="gender" value="Lgbt" id="lgbt">
+
+           </div>
+           <span class="error-message"></span>
+
+
+           <div class="form__checkbox">
+
+               <label for="checkbox1" class="checkbox__lable">checkbox1</label>
+               <input class="checkbox__btn" type="checkbox" name="checkbox" value="checkbox1" id="checkbox1">
+
+               <label for="checkbox2" class="checkbox__lable">checkbox2</label>
+               <input class="checkbox__btn" type="checkbox" name="checkbox" value="checkbox2" id="checkbox2">
+
+               <label for="checkbox3" class="checkbox__lable">checkbox3</label>
+               <input class="checkbox__btn" type="checkbox" name="checkbox" value="checkbox3" id="checkbox3">
+
+           </div>
+           <span class="error-message"></span>
+
+           <label for="file">Avatar</label>
+           <input type="file" id="file">
+           <span class="error-message"></span>
+
+           
+           <button class="form__submit">Sign up</button>
+        </form>
+    </div>
+
+    <script src="assets/javascript/form-validation.js"></script>
+    <script>
+        let obj
+        Validator({
+            form: '#form-signup',
+            rules: [ 
+                Validator.checkEmty('#username', '#username + .error-message'),
+                Validator.checkEmty('#file', '#file + .error-message'),
+                Validator.checkEmail('#email', '#email + .error-message'),
+                Validator.checkPassword('#password', '#password + .error-message'),
+                Validator.checkConfirmPassword('#passwordConfirm', '#password', '#passwordConfirm + .error-message'),
+                Validator.checkRadio('.form__gender .form__radio', '.form__gender + .error-message .error-message'),
+                Validator.checkCheckbox('.form__checkbox .checkbox__btn', '.form__checkbox + .error-message')
+            ],
+            handleInfo: function(info) {
+                    //call API
+                    console.log(info)
+                }
+        }
+        )
+    </script>
+    
+</body>
+</html>
